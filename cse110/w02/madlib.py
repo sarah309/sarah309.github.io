@@ -21,9 +21,9 @@ output = f"I know, I was as {emotion} as you are. I mean, you don't see that eve
 print(output)
 output = f"I do? I {preterite}. And he joined me! At some point I realized I never got his name. He said "
 print(output)
-output = f"his name is {name.capitalize()}, but his friends call him {animal_sound.capitalize()}. We chatted for a bit, and then I "
+output = f"his name is {name.capitalize()}, but his friends call him {animal_sound.capitalize()}. We chatted for a bit, and then "
 print(output)
-output = f"checked the time. I was late for my {activity} class! I gave him a quick"
+output = f"I checked the time. I was late for my {activity} class! I gave him a quick"
 print(output)
 output = f"goodbye {verb} and headed out. What a day."
 print(output)
