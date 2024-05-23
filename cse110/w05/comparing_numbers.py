@@ -23,4 +23,4 @@ else:
     if animal.lower() == 'cow':
         print('You guessed it!')
     else:
-        print("Oof, the correct answer is cow. I thought my hint was too obvious, but clearly not.")
+        print("Oof, the correct answer is cow. Was my hint not obvious?")
