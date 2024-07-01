@@ -76,7 +76,7 @@ main section img {
   box-sizing: border-box;
 }
 footer {
-  background-color: #0b3721;
+  background-color: #8f1010;
   color: white;
   padding: 25px 50px;
   display: flex;
@@ -97,8 +97,7 @@ footer a {
   font-weight: bold;
 }
 footer a:hover {
-  color: #80b89e;
-  text-decoration: none;
+  text-decoration: underline;
 }
 .logo {
   width: 80px;
