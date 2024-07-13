@@ -78,7 +78,7 @@ main section img {
 footer {
   background-color: #8f1010;
   color: white;
-  padding: 25px 50px;
+  padding: 15px 30px;
   display: flex;
   justify-content: space-around;
 }
