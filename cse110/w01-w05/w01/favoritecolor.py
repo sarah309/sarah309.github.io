@@ -1,0 +1,7 @@
+print()
+color = input('What is your favorite color?')
+print()
+print('No way, ' + color + ' is my favorite color too!' + '\n' + '\n')
+food = input('What about your favorite food?')
+print()
+print('Mmm... ' + food + ' sounds really good right about now' + '\n')

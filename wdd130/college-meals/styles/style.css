@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css?family=IM+Fell+French+Canon+SC|Lato");
+@import url("https://fonts.googleapis.com/css2?family=Patua+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap");
+
+.content {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+#hero-msg h1 {
+  text-align: center;
+  color: #0b3721;
+  font-family: "IM Fell French Canon SC";
+  font-size: 500%;
+}
+#hero-msg {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+#hero {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+}
+#hero-box {
+  grid-column: 1/4;
+  grid-row: 1/3;
+  z-index: -1;
+}
+main section {
+  text-align: center;
+  font-family: "Dosis", "Lato", sans-serif;
+}
+.home-grid {
+  display: grid;
+}
+body {
+  background-color: white;
+  font-family: "Dosis", "Patua", sans-serif;
+  font-size: 22px;
+  margin: 0;
+  padding: 0;
+}
+header {
+  display: grid;
+  grid-template-columns: 150px auto;
+  background-color: #0b3721;
+}
+nav {
+  display: flex;
+  justify-content: space-around;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  padding: 35px;
+  display: block;
+}
+nav a:hover {
+  background-color: #80b89e;
+  color: #0b3721;
+  text-decoration: none;
+}
+.home-title {
+  font-family: "Dosis", "Patua", sans-serif;
+  font-size: 2em;
+  margin-top: 50px;
+  grid-column: 2/3;
+  grid-row: 1/2;
+  text-align: center;
+}
+h3 {
+  color: #0b3721;
+  text-align: center;
+}
+main section img {
+  box-sizing: border-box;
+}
+footer {
+  background-color: #8f1010;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-around;
+}
+footer p {
+  font-size: 1.2em;
+}
+#copyright {
+  text-align: left;
+}
+#links {
+  text-align: right;
+}
+footer a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+.logo {
+  width: 80px;
+}
+#logo_link {
+  padding-top: 5px;
+  justify-self: center;
+  align-self: center;
+}
+.icon {
+  width: 80px;
+  padding-top: 10px;
+}
+#hero-img {
+  width: 100%;
+  opacity: 60%;
+}
+@media screen and (max-width: 900px) {
+  #hero,
+  .home-grid {
+    display: block;
+    height: auto;
+  }
+  nav,
+  footer {
+    flex-direction: column;
+  }
+  #background {
+    display: none;
+  }
+}

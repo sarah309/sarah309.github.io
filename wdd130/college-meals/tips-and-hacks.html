@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .container {
+        width: 500px;
+        position: relative;
+        left: 35%;
+      }
+      
+      .card-img {
+        width: 500px;
+        height: auto;
+      }
+
+      .overlay {
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        right: 0;
+        background-color: #0b3721;
+        overflow: hidden;
+        height: 0;
+        transition: .5s ease;
+      }
+      
+      .container:hover .overlay {
+        bottom: 0;
+        width: 500px;
+        height: 100%;
+      }
+      
+      .text {
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      footer {
+        margin-top: 50px;
+      }
+    </style>
+    <title>College Kitchen Cuisine | Tips & Hacks</title>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <div class="content">
+      <header>
+        <a href="index.html" id="logo_link">
+          <img
+            src="images/logo.png"
+            alt="College Kitchen Cuisine Logo"
+            class="logo"
+          />
+        </a>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="recipes.html">Recipes</a>
+          <a href="tips-and-hacks.html">Tips and Hacks</a>
+        </nav>
+      </header>
+      <main class="tips-and-hacks">
+        <section class="kitchen-essentials">
+          <h2>Kitchen Essentials</h2>
+          <p>List of basic kitchen tools and equipment that are essential for easy cooking in a college dorm or apartment</p>
+          <div class="container">
+            <img
+              class="card-img"
+              src="images/utensils.avif"
+              alt="Kitchen utensils"
+            />
+            <div class="overlay">
+              <div class="text">
+                  <p>Can opener</p>
+                  <p>Paring knife</p>
+                  <p>Cutting board</p>
+                  <p>A medium-sized saucepan and skillet</p>
+                  <p>A set of basic cooking utensils (spatula, wooden spoon, ladle, tongs, etc.)</p>
+                  <p>Storage containers</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="shopping-tips">
+          <h2>Shopping Tips</h2>
+          <p>Advice on budgeting for groceries and shopping smart to maximize value and minimize expenses</p>
+          <div class="container">
+            <img
+              class="card-img"
+              src="images/groceries.png"
+              alt="Groceries"
+            />
+            <div class="overlay">
+              <div class="text">
+                  <p>Plan your meals for the week ahead before grocery shopping</p>
+                  <p>Create and stick to a shopping list</p>
+                  <p>Buy non-perishable items in bulk</p>
+                  <p>Buy store-brand items</p>
+                  <p>Purchase frozen fruits and vegetables</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="meal-prep">
+          <h2>Time-Saving Techniques</h2>
+          <p>Hacks for efficient meal preparation and cooking</p>
+          <div class="container">
+            <img
+              class="card-img"
+              src="images/meal_prep.jpg"
+              alt="Kitchen utensils"
+            />
+            <div class="overlay">
+              <div class="text">
+                <p>Use pre-cut vegetables</p>
+                <p>Utilize a slow cooker for easy meals</p>
+                <p>Meal prep on your least busy days</p>
+                <p>Clean dishes/utensils/cutting boards as you cook</p>
+                <p>Prepare one-pot meals</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      </div>
+      <footer>
+        <p id="copyright">College Kitchen Cuisine &copy; 2024 - Sarah Egendoerfer</p>
+        <p id="links"><a href="index.html">Home</a></p>
+        <p id="links"><a href="recipes.html">Recipes</a></p>
+        <p id="links"><a href="tips-and-hacks.html">Tips and Hacks</a></p>
+        <p id="links"><a href="site-plan.html">Site Plan</a></p>
+      </footer>
+    </div>
+  </body>
+</html>
