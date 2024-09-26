@@ -1,16 +1,11 @@
 # solve a pendulum swing time
 import math
 
-print()
-
-h = float(input('Please enter the height of the pendulum: '))
-
-print()
+h = float(input('\nPlease enter the height of the pendulum: '))
 
 t = (2 * math.pi) * (math.sqrt(h / 9.81))
 
-print(f'The time of the swing of a pendulum with a height of {h} meters is: {t:.2f} seconds.')
-
+print(f'\nThe time of the swing of a pendulum with a height of {h} meters is: {t:.2f} seconds.')
 print()
 
 """
