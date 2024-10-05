@@ -10,7 +10,7 @@ def main():
         can_height = list[i][2]
         volume = compute_volume(can_radius, can_height)
         surface_area = compute_surface_area(can_radius, can_height)
-        storage_efficiency = compute_volume(can_radius, can_height) / compute_surface_area(can_radius, can_height)
+        storage_efficiency = volume / surface_area
         print(f'{list[i][0]} {storage_efficiency:.2f}')
     print()
 
