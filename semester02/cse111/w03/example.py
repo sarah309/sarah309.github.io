@@ -15,7 +15,6 @@ def main():
 def miles_per_gallon(start_miles, end_miles, amount_gallons):
     """Compute and return the average number of miles
     that a vehicle traveled per gallon of fuel.
-
     Parameters
         start_miles: An odometer value in miles.
         end_miles: Another odometer value in miles.
