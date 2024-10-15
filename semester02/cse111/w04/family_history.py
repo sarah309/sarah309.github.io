@@ -140,11 +140,9 @@ def count_genders(people_dict):
         
         # Print the number of males and females in the people dictionary.
 
-        print(f'Number of males: {num_males}')
-        print(f'Number of females: {num_females}')
+    print(f'Number of males: {num_males}')
+    print(f'Number of females: {num_females}')
     
-    print()
-
 
 def print_marriages(marriages_dict, people_dict):
     """For each marriage in the marriages dictionary, print
