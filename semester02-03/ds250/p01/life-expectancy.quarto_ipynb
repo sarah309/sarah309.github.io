@@ -1,0 +1,72 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "from lets_plot import *\n",
+        "\n",
+        "LetsPlot.setup_html(isolated_frame=True)\n"
+      ],
+      "id": "4797c66b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "df = pd.read_csv(\"https://byui-cse.github.io/cse110-course/lesson11/life-expectancy.csv\")\n"
+      ],
+      "id": "0dd7f900",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "df.Entity[1] #this gives me row 1 of the Entity column\n",
+        "df[1:3] #this returns row 1 and 2, not row 3\n",
+        "df[ :3] #row 0 through 3\n",
+        "df['Entity'].head() #to reference columns, give their name"
+      ],
+      "id": "169a0bea",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "df.columns = ['Entity', 'Code', 'Year', 'Life']"
+      ],
+      "id": "7c12348f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "df.loc[11:21, 2] #using year's column if won't work\n",
+        "df.loc[11:21, ('Life', 'Year')] #reordered columns\n"
+      ],
+      "id": "c5472c16",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "C:\\Users\\egen1\\AppData\\Local\\Programs\\Python\\Python313\\share\\jupyter\\kernels\\python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
