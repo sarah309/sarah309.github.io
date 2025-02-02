@@ -1,0 +1,161 @@
+```{python}
+import pandas as pd
+import numpy as np
+from lets_plot import *
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+```{python}
+df = pd.read_csv("https://byui-cse.github.io/cse110-course/lesson11/life-expectancy.csv")
+
+
+```
+
+To reference certain peices of a dataset
+```{python}
+df.Entity[1] #This gives me row 1 of the Entity column
+df[1:3] #This returns row 1 and 2, but not 3
+df[ :3]
+df['Entity'] #To reference columns, give their name
+df['Entity'].head()
+
+```
+
+To subset both rows and columns simultaneously
+
+```{python}
+df.columns = ['Entity', 'Code', 'Year', 'Life']
+
+```
+
+```{python}
+df.loc[11:21, 'Year'] #Using year's column # won't work
+my_new_data = df.loc[11:16, ['Life', 'Year']] #note the reordered columns
+
+```
+
+Now using iloc
+```{python}
+df.iloc[20:30, [0,3]] #use of slicing and lists of column #'s
+df.iloc[ :4, [0,3]]
+df.iloc[ :4, : ]
+df.iloc[-2: , [0,3]]
+
+```
+
+query method, which is more of a pandas approach
+```{python}
+df.query('Entity == "France" ' )
+df.query("Entity == 'France'")
+# OR
+df[df['Entity'] == "France"]
+
+#What if I want a set of any of the three
+three_countries = df.query('Entity == ["France", "United States", "Japan"]')
+three_countries['Entity'].value_counts() #Counts the number of occurences of each unique value in Entity
+
+# OR
+df[df['Entity'].isin(['France', 'United States', 'Japan'])]
+
+#How to get something NOT equal to
+df.query('Entity != "Zimbabwe"' )
+
+```
+
+```{python}
+top5_mean = df.sort_values(["Year", "Life"], ascending = False).head(5).Life.mean()
+df.Entity.value_counts()
+df.Entity.unique().shape[0] ## of unique countries in the dataset
+
+# ctrl + / to comment out blocks of code
+
+```
+
+## Day 2
+
+
+```{python}
+usa = df.query('Entity == "United States"')
+(
+    ggplot(data = usa,
+            mapping = aes(x = 'Life')) +
+            geom_histogram()
+)
+```
+
+### Task 1 USA life expectancy
+
+For a reduced number of years
+```{python}
+usa2 = usa.query('Year > 1920 & Year <=2000')
+(
+    ggplot(data = usa2, 
+            mapping = aes(x = "Year", y = "Life")) +
+            geom_line()
+)
+```
+
+Instead of filtering my dataset, I can change the years shown
+on the fly, in the plot
+
+
+```{python}
+(
+    ggplot(data = usa, 
+            mapping = aes(x = "Year", y = "Life")) +
+            geom_line() +
+            scale_x_continuous(limits = [1920, 2000]) +
+            scale_y_continuous(limits = [50, 80]) +
+
+)
+```
+
+Practice markings and annotations
+
+```{python}
+(
+    ggplot(data = usa, 
+            mapping = aes(x = "Year", y = "Life")) +
+            geom_line() +
+            geom_rect(xmin = 1916, xmax = 1920, ymin = 46, ymax = 55, fill = "red", alpha = .2, color = "rgba(0,0,0,0)") +
+            geom_vline(xintercept = 1943, color = "red", linetype = 2) +
+            geom_text(label = "Last decrease in 1943",
+            x = 1947, y = 55, angle = 90)
+
+)
+```
+
+Multiple lines on the same chart
+
+
+```{python}
+three = df.query('Entity == ["United States", "Japan", "France"]')
+# three['Entity'].value_counts()
+# to comment a line or block of lines use ctrl + /
+
+p = (
+    ggplot(data = three,
+    mapping = aes(x = 'Year',
+                  y = 'Life', 
+                  color = 'Entity')) +
+    geom_line() +
+    labs(title = "Life Expectancy",
+    subtitle = "Note the impact of WWI and WWII")
+)
+```
+
+```{python}
+t = (
+    theme_grey() +
+    theme(axis_text_y = element_text(
+        color="blue", size=12), plot_title=element_text(hjust = .5), plot_subtitle=element_text(hjust=.5),
+        panel_grid=element_line(linetype=2, size=5))
+)
+
+```
+
+``` {python}
+p + t
+
+```

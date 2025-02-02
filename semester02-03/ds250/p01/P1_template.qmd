@@ -49,12 +49,26 @@ df = pd.read_csv("https://github.com/byuidatascience/data4names/raw/master/data-
 
 __How does your name at your birth year compare to its use historically?__
 
-_type your results and analysis here_
+My name at my birth year was high, but also in decline from it's peak use in 1989. My name was used about 7500 more times than its use historically in the mid-1900s.
 
 ```{python}
 # Include and execute your code here
+my_name = df.query('name == "Sarah"')
 
-
+(
+    ggplot(data = my_name,
+            mapping = aes(x = 'year', y='Total')) +
+            geom_line() +
+            geom_vline(xintercept=2005, color="blue", linetype="dashed") +
+            geom_label(x=2005, y=min (my_name["Total"]), label="Birth Year: 2005", color="red", ha="center", va="bottom", hjust=1, vjust=0) + # hjust=0, vjust=1 puts the text to the right of the dotted line
+            scale_x_continuous(format="d") +
+            labs(
+              title = "Frequency of the Name Sarah",
+              subtitle= "Comparing the Use of My Name Over Time",
+              x='Year (1910-2015)',
+              y='Total' 
+            )
+)
 ```
 
 
@@ -62,11 +76,26 @@ _type your results and analysis here_
 
 __If you talked to someone named Brittany on the phone, what is your guess of his or her age? What ages would you not guess?__
 
-_type your results and analysis here_
+If I talked to someone named Brittany on the phone, I would guess her age to be 35 because the peak use of that name was 1990. I would not guess 60 because the use of the name Brittany is rare before 1970.
 
 ```{python}
 # Include and execute your code here
+brittany = df.query('name == "Brittany"')
 
+(
+    ggplot(data = brittany,
+            mapping = aes(x = 'year', y='Total')) +
+            geom_line() +
+            scale_x_continuous(format="d") +
+            geom_vline(xintercept=1990, color="blue", linetype="dashed") +
+            geom_label(x=1990, y=min (brittany["Total"]), label="Peak Year: 1990", color="red", ha="center", va="bottom", hjust=1, vjust=0) +
+            labs(
+              title = "Frequency of the Name Brittany",
+              subtitle= "Comparing the Use of the Name Brittany Over Time",
+              x='Year (1968-2015)'
+            )
+
+)
 
 ```
 
@@ -75,10 +104,23 @@ _type your results and analysis here_
 
 __Mary, Martha, Peter, and Paul are all Christian names. From 1920 - 2000, compare the name usage of each of the four names in a single chart. What trends do you notice?__
 
-_type your results and analysis here_
+I notice that the name Mary has experienced drastic peaks and dips over the century, with a huge dip from 1950-1975, but it seems to be leveling out now after a steady decline. It is interesting that all four names seem to have reached their individual peaks around 1950-1955, and all four experienced decline since then.
 
 ```{python}
 # Include and execute your code here
+christian_names = df[df["name"].isin(["Mary", "Martha", "Peter", "Paul"])]
+(
+    ggplot(data = christian_names,
+            mapping = aes(x = 'year', y='Total', color="name")) +
+            geom_line() +
+            scale_x_continuous(format="d") +
+            labs(
+              title = "Frequency of Mary, Martha, Peter, Paul",
+              subtitle= "Comparing the Use of Four Christian Names Over Time",
+              x='Year (1910-2015)'
+            )
+
+)
 
 ```
 
@@ -88,11 +130,25 @@ _type your results and analysis here_
 
 __Think of a unique name from a famous movie. Plot the usage of that name and see how changes line up with the movie release. Does it look like the movie had an effect on usage?__  
 
-_type your results and analysis here_
+The movie release of Forrest Gump seems to have had a direct and dramatic effect on the frequency of the name. The same year the movie was released the name Forrest increased by almost 5.5 times more compared to ten years earlier.
 
 ```{python}
 # Include and execute your code here
+movie_name = df.query('name == "Forrest"')
+(
+    ggplot(data = movie_name,
+            mapping = aes(x = 'year', y='Total')) +
+            geom_line() +
+            scale_x_continuous(format="d") +
+            geom_vline(xintercept=1994, color="blue", linetype="dashed") +
+            geom_label(x=1994, y=min (movie_name["Total"]), label="Movie Release: 1994", color="red", ha="center", va="bottom", hjust=1, vjust=0) +
+            labs(
+              title = "Frequency of the Name Forrest",
+              subtitle= "Before and After the Movie Release of Forrest Gump",
+              x='Year (1910-2015)'
+            )
 
+)
 
 ```
 
@@ -102,12 +158,39 @@ _type your results and analysis here_
 
 __Reproduce the chart Elliot using the data from the `names_year.csv` file.__ 
 
-_type your results and analysis here_
+E.T. movie releases don't seem to strongly correlate with the name's usage. After the first release, the name Elliot was already trending upward. After the second, it dipped the next year before a considerable spike in popularity. After the third release it has had a continual trend upward, so E.T. possibly influenced the name's usage in more recent years.
 
 ```{python}
 # Include and execute your code here
+# Use geom_text instead of geom_lab so there is not a box around the text
+elliot = df.query('name == "Elliot"')
 
-
+(
+    ggplot(data = elliot,
+            mapping = aes(x = 'year', y='Total', color="name")) +
+            geom_line() +
+            geom_vline(xintercept=1982, color="red", linetype="dashed") +
+            geom_vline(xintercept=1985, color="red", linetype="dashed") +
+            geom_vline(xintercept=2002, color="red", linetype="dashed") +
+            geom_text(x=1981, y=1200, label="E.T. Released", color="black", ha="left", va="bottom", hjust=1, vjust=0) + # hjust=0, vjust=1 puts the text to the right of the dotted line
+            geom_text(x=1986, y=1200, label="Second Release", color="black", ha="left", va="bottom", hjust=0, vjust=1) + # hjust=0, vjust=1 puts the text to the right of the dotted line
+            geom_text(x=2003, y=1200, label="Third Release", color="black", ha="left", va="bottom", hjust=0, vjust=1) + # hjust=0, vjust=1 puts the text to the right of the dotted line
+            scale_x_continuous(format="d", limits=(1950, 2020)) +
+            scale_y_continuous(format="d", limits=(0, 1200)) +
+            labs(
+              title = "Elliot... What?"
+            ) +
+            theme(
+              axis_ticks="blank",
+              legend_key=element_rect(fill="white", color="white"),
+              legend_justification=[1, 1],
+              panel_background=element_rect(fill="#e0eff2"),
+              panel_grid=element_line(color="white", size=1),
+            ) +
+            guides(color=guide_legend(nrow=1)) +
+            scale_color_manual(values={"Elliot": "blue"}) +
+            ggsize(width=950, height=500)
+)
 ```
 
 

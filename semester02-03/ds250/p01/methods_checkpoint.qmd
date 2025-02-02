@@ -1,0 +1,86 @@
+```{python}
+import pandas as pd
+import numpy as np
+from lets_plot import *
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+```{python}
+#read file
+
+df = pd.read_csv("https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv")
+```
+
+
+```{python}
+my_name = df.query('name == ["Oliver"]')
+my_name['name'].value_counts() #Counts the number of occurences of each unique value in Entity
+
+```
+
+```{python}
+my_name = df.query('name == "Oliver"')
+(
+    ggplot(data = my_name,
+            mapping = aes(x = 'UT')) +
+            geom_histogram()
+)
+my_name['name'].value_counts()
+```
+
+```{python}
+(
+    ggplot(data = my_name,
+           mapping = aes(x = 'UT', y = 'year')) +
+           geom_line()
+)
+```
+
+```{python}
+(
+    ggplot(data = my_name,
+           mapping = aes(x = 'UT', y = 'count')) +
+           geom_line() +
+           scale_x_continuous(limits = [1920, 2000]) +
+           scale_y_continuous(limits = [50, 80])
+)
+```
+
+
+
+
+
+
+
+```{python}
+
+my_name = "Oliver"  # Replace with your name
+filtered_df = df[df['name'].str.lower() == my_name.lower()]
+
+```
+
+```{python}
+
+my_state = "UT"  # Replace with your state abbreviation
+total_babies = filtered_df["UT"].sum()
+print(total_babies)
+
+
+# Group by name and sum across all years for the state
+state_totals = df.groupby('name')[my_state].sum().reset_index()
+print(state_totals[state_totals['name'].str.lower() == my_name.lower()])
+
+
+```
+
+```{python}
+
+my_name = "Felisha"  # Replace with the name you're searching for
+filtered_df = df[df["name"].str.lower() == my_name.lower()]
+
+earliest_year = filtered_df["year"].min()
+print(f"The earliest year the name {my_name} was used is {earliest_year}.")
+
+
+```
